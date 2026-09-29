@@ -1,14 +1,343 @@
-# PRD & Prototype Sprint
+# Spotlight curated rail, Simplified PRD (StreamLine)
 
-> **Module 4 · Lab 2.** Repo file `04-roadmap/prd-and-prototype.md` — part of your submission.
-> Do the lab in the **Module 4 · Exercise 2 Guide** (linked from the Module 4 deck), then click **⬇ Download .md** — it saves as this exact file. Commit it here.
-> It deepens the top feature from your `roadmap-prd-prototype.md` and feeds the **Roadmap, PRD & Prototype** slide of your Module 6 deck.
+**Author:** Me · **Status:** Draft · **Target:** High-Fidelity Prototype · **Persona:** The overwhelmed entertainment seeker
 
-## Responses
+## 1. The Big Picture
+- **Vision:** The member get an easy overview with limited suggested list of curated titles that corresponds to their interests which leads to immediate selection and succes as in viewing the titles to the end
+- **Press release:** Removes discovery overload and fatigue
+Well curated list ensures match and success in viewing the selcetion to te end
+- **Success metric:** Watching more than 30 minutes
+- **Guardrail:** Number of active users
 
-- **The "Now" feature I'm scoping (name + one-line core description):** _(not filled in)_
-- **My finalized Must-Haves (after overriding the AI):** _(not filled in)_
-- **What I demoted from Must → Should/Won't, and why:** _(not filled in)_
-- **One thing my PRD makes explicit that a vague brief would have missed:** _(not filled in)_
-- **Where the prototype revealed a gap in my PRD logic (what I updated):** _(not filled in)_
-- **My shareable prototype URL:** _(not filled in)_
+## 2. The Details
+### User stories
+- US-01: View Spotlight Recommendations.  As an overwhelmed entertainment seeker,  I want to see a dedicated Spotlight rail when I open the homepage,  so that I can quickly find a small set of trusted recommendations rather than browsing the entire catalogue.
+- Acceptance Criteria
+- Spotlight rail is visible on the homepage.
+- Spotlight is displayed above or alongside existing content rails.
+- Spotlight is visible without significant scrolling.
+- Spotlight contains between 5 and 10 titles.
+- Spotlight is clearly labeled "Spotlight".
+- Supporting copy is shown (e.g. "Not sure what to watch? Start here.").
+- US-02: Evaluate Spotlight Titles, As an overwhelmed entertainment seeker,  I want enough information about each Spotlight recommendation,  so that I can quickly decide whether I want to watch it.
+- Acceptance Criteria
+- Each Spotlight title displays:
+- Artwork
+- Title
+- Content type (movie or series)
+- Existing platform metadata available on standard content cards
+- US-03: Start Watching from Spotlight, As an overwhelmed entertainment seeker,  I want to move seamlessly from Spotlight into watching content,  so that I can begin viewing with minimal effort.
+- Acceptance Criteria
+- Selecting a Spotlight title opens the title details page.
+- Users can start playback using existing playback flows.
+- No additional navigation steps are introduced compared with standard content.
+- US-04: Curate Spotlight Content, As an editor,  I want to manually manage the titles shown in Spotlight,  so that I can provide a trusted and intentionally curated selection.
+- Acceptance Criteria
+- Editors can add titles to Spotlight.
+- Editors can remove titles from Spotlight.
+- Editors can update Spotlight selections without a code deployment.
+- Spotlight content is editorially curated rather than generated solely by the recommendation engine.
+- US-05: Measure Spotlight Effectiveness, As a Product Manager,  I want to measure user interaction with Spotlight,
+- so that I can determine whether the feature reduces browsing and increases viewing.
+- Acceptance Criteria
+- Track:
+- Spotlight impressions
+- Spotlight clicks
+- Spotlight title starts
+- Session duration after Spotlight interaction
+- Success Metric
+- Increase in users remaining on the platform for more than 30 minutes after interacting with Spotlight.
+- Definition of Done for Sprint 1
+- A user can:
+- Open StreamLine.
+- Immediately see Spotlight.
+- Choose from 5-10 curated titles.
+- Access title details and start playback.
+- Be included in Spotlight analytics.
+- An editor can:
+- Create and update the Spotlight shortlist.
+- Publish changes without engineering involvement.
+### Screens to build
+- Screen 1: Entry Point
+- Homepage Spotlight Rail
+- Goal
+- Get overwhelmed users to stop browsing and consider a much smaller set of options.
+- User Story
+- As an overwhelmed entertainment seeker, I want to see a trusted shortlist when I open StreamLine so that I can start choosing immediately.
+- UI Components
+- Spotlight Header
+- SPOTLIGHT
+- Not sure what to watch? Start here.
+- Spotlight Rail
+- 5-10 curated titles
+- Each card contains:
+- Artwork
+- Title
+- Movie / Series
+- Existing metadata
+- CTA
+- Click title
+- Success Criteria
+- User notices Spotlight within a few seconds of entering the homepage.
+- Screen 2: Feature Core
+- Spotlight Title Details
+- Goal
+- Help the user make a final decision and start playback.
+- User Story
+- As an overwhelmed entertainment seeker, I want enough information about a Spotlight recommendation so that I can decide whether it is worth watching.
+- UI Components
+- Hero Artwork
+- Title Information
+- Title
+- Content type
+- Runtime
+- Existing metadata
+- Synopsis
+- Primary CTA
+- ▶ Watch Now
+- Secondary CTA
+- + Add to List
+- (optional if already available on platform)
+- User Actions
+- Start watching
+- Return to Spotlight rail
+- Success Criteria
+- User starts playback.
+- Screen 3: Success / Confirmation
+- Playback Started
+- Instead of creating a new confirmation page, reuse the existing player experience.
+- Goal
+- Confirm successful selection.
+- User Story
+- As an overwhelmed entertainment seeker, I want to start watching immediately after making a choice so that I feel I made progress rather than continuing to browse.
+- UI Components
+- Existing Video Player
+- Optional Lightweight Confirmation
+- Displayed for 2-3 seconds:
+- Now Playing from Spotlight
+- Great choice.
+- User Actions
+- Continue watching
+- Exit player
+- Success Criteria
+- Playback starts successfully.
+### Functional requirements
+- FR-01: Display Spotlight Rail
+- The system shall display a dedicated Spotlight rail on the homepage.
+- Acceptance Criteria
+- Spotlight rail is visible on initial homepage load.
+- Spotlight appears above at least 80% of existing content rails.
+- Spotlight is accessible without significant scrolling.
+- Spotlight header and supporting copy are displayed.
+- FR-02: Show Curated Content
+- The system shall display a curated list of Spotlight titles selected by editors.
+- Acceptance Criteria
+- Spotlight contains between 5 and 10 titles.
+- Titles are retrieved from an editorially managed list.
+- Titles are displayed in editor-defined order.
+- Recommendation algorithms do not override Spotlight ordering.
+- FR-03: Display Essential Title Information
+- The system shall display sufficient information for users to evaluate a Spotlight title.
+- Acceptance Criteria Each Spotlight card displays:
+- Title artwork
+- Title name
+- Content type (Movie or Series)
+- Existing platform metadata
+- FR-04: Enable Title Selection
+- The system shall allow users to select a Spotlight title.
+- Acceptance Criteria
+- Clicking a Spotlight title opens the title detail page.
+- Selected title details load successfully.
+- Navigation occurs within existing platform standards.
+- FR-05: Enable Playback
+- The system shall allow users to start playback from selected Spotlight titles.
+- Acceptance Criteria
+- Users can start playback from the title detail page.
+- Existing playback flow is reused.
+- No new playback experience is required.
+- FR-06: Support Editorial Management
+- The system shall allow authorized editors to manage Spotlight content without engineering deployment.
+- Acceptance Criteria
+- Editors can add titles.
+- Editors can remove titles.
+- Editors can reorder titles.
+- Changes are reflected on the homepage within 5 minutes of publishing.
+- FR-07: Capture Spotlight Analytics
+- The system shall track user interaction with Spotlight.
+- Acceptance Criteria The following events are recorded:
+- Spotlight impression
+- Spotlight title click
+- Spotlight watch start
+- Session duration after Spotlight interaction
+- Required event attributes:
+- User ID (where available)
+- Title ID
+- Timestamp
+- Session ID
+- Definition of Success
+- The feature is considered successful when it contributes to improving the primary metric:
+- Increase the proportion of users who remain on the platform for more than 30 minutes after interacting with Spotlight.
+### Smart behaviors (Situation → Outcome)
+- If the user opens the homepage, then Spotlight is displayed above standard recommendation rails to reduce browsing effort.
+- If fewer than 5 valid Spotlight titles are available, then the system fills remaining slots from a predefined editorial backup list.
+- If a title included in Spotlight becomes unavailable, then it is automatically removed from the rail.
+- If a user sees the Spotlight rail on screen, then a Spotlight Impression event is recorded.
+- If a user clicks a Spotlight title, then they are taken directly to the existing title details page.
+- If a user starts playback from a Spotlight title, then a Spotlight Watch Start event is recorded.
+- If the editorial team changes the Spotlight selection, then the homepage updates without requiring a code deployment.
+- If duplicate titles are added to Spotlight, then the system displays each title only once.
+- If Spotlight content fails to load, then the rail is hidden and the user continues to see the standard homepage experience.
+- If an editor defines a title order, then Spotlight displays titles in exactly that order without algorithmic re-ranking.
+- If a user interacts with Spotlight, then their subsequent session duration is tracked for performance measurement.
+- If a title is missing required metadata (artwork or title), then that title is excluded from Spotlight and logged as an error.
+### Technical constraints
+- Copilot said:
+- For a hackathon-style PRD or constrained MVP, technical constraints should explicitly define what the team is not allowed to build.
+- Technical Constraints
+- No new recommendation engine. Spotlight uses a manually curated list only.
+- No AI, machine learning, personalization, ranking, or taste-profile generation.
+- No new content metadata model. Reuse existing title, artwork, genre, runtime, and content-type data.
+- No new playback experience. Reuse the existing title details page and video player.
+- No new search, browse, filter, or discovery functionality.
+- No social features, including follows, sharing, comments, ratings, or watch parties.
+- No push notifications, emails, or outbound communications.
+- No complex CMS. Editorial management may be a simple admin form or configuration screen.
+- No workflow, approval, moderation, or publishing process.
+- No A/B testing framework in Sprint 1.
+- No advanced analytics dashboard. Event tracking only.
+- No historical reporting or performance insights UI.
+- No cross-device synchronization requirements beyond what already exists in the platform.
+- No offline download functionality.
+- No localization or multi-language content management beyond existing platform support.
+- No new APIs if equivalent data already exists within the platform.
+- No new database schema. Store Spotlight as a simple ordered list of existing content IDs.
+- No real-time updates. Refreshing Spotlight within a few minutes is sufficient.
+- No performance optimization work beyond maintaining existing homepage load-time standards.
+- Preferred Implementation Constraint
+- Spotlight = Ordered list of 5-10 existing content IDs
+- + Homepage rail
+- + Existing title page
+- + Existing player
+- + Basic event tracking
+- If a proposed solution requires a new recommendation service, new content model, new player, or significant backend architecture, it is out of scope for Sprint 1.
+
+## 3. The Logistics
+### Features out
+- Personalisation
+- Personalized Spotlight Queue
+- Individual recommendation logic
+- Taste-profile generation
+- Reason: Introduces complexity and increases perceived choice.
+- Explanation Features
+- "Why You'll Love This" labels
+- Reason: Already prioritised for NEXT.
+- Mood Selection
+- Mood-based entry flow
+- Reason: Separate feature already prioritised independently.
+- Social Features
+- Curator profiles
+- Following curators
+- Watch parties
+- Sharing Spotlight picks
+- Reason: Do not solve the decision paralysis problem.
+- Discovery Expansion
+- Hidden Gem badges
+- Advanced filters
+- Search enhancements
+- Browsing refinements
+- Reason: More discovery is the opposite of the desired outcome.
+- Communication Features
+- Spotlight emails
+- Push notifications
+- Weekly digest
+- Reason: Focus is improving the in-session selection experience.
+- Offline & Download Features
+- Download from Spotlight
+- Offline viewing enhancements
+- Reason: Solves consumption, not selection.
+### Edge cases & safety guard
+- Edge Cases & Safety Guards
+- If Spotlight content fails to load, then hide the Spotlight rail and show the standard homepage experience.
+- If fewer than 5 valid Spotlight titles are available, then show the available titles and log a content warning for editors.
+- If a Spotlight title has been removed from the catalogue, then automatically remove it from the rail.
+- If a Spotlight title cannot be played due to licensing, entitlement, or technical issues, then do not display it in Spotlight.
+- If a title is missing artwork, title, or content type, then exclude it from Spotlight and log an error.
+- If duplicate titles are configured, then display only the first occurrence.
+- If an editor adds more than 10 titles, then only the first 10 are displayed.
+- If an editor adds fewer than 5 titles, then display the available titles and flag the issue in the admin view.
+- If analytics tracking fails, then Spotlight remains available and does not impact playback or browsing.
+- If the user selects a Spotlight title and navigation fails, then display the standard platform error state and preserve the user's homepage session.
+- If the user returns to the homepage after abandoning a Spotlight title, then Spotlight remains visible and unchanged during the session.
+- Must NEVER Do
+- Must never display content that cannot be watched by the user.
+- Must never override editorial ordering with recommendation algorithms.
+- Must never show more than 10 Spotlight titles, as this increases decision paralysis.
+- Must never require additional sign-up, onboarding, surveys, or preference collection before showing Spotlight.
+- Must never send users to a dead-end page with no path to playback.
+- Must never show the same title multiple times within Spotlight.
+- Must never degrade homepage performance compared with existing homepage load standards.
+- Must never block users from accessing existing discovery rails if they choose to ignore Spotlight.
+- Must never expose internal editorial tools or configuration to end users.
+- Must never replace the existing recommendation experience; Spotlight is a shortcut, not a new homepage.
+- Must never increase the number of decisions required to start watching content.
+- Must never prioritize business, sales, or promotional objectives over helping the user choose and start watching quickly.
+### Decision log
+- Decision 1: Use Editorial Curation Instead of Personalization
+- Decision: Spotlight will be a manually curated list of 5-10 titles managed by editors.
+- Alternative Considered: Personalized recommendations, AI ranking, or a "Your Spotlight" queue.
+- Reason:
+- The core user problem is decision paralysis, not recommendation accuracy.
+- Editorial curation is faster to build and easier to test within a 3-week sprint.
+- Keeps scope aligned to the hypothesis: a trusted shortlist helps users start watching faster.
+- Decision 2: Reuse Existing Title and Playback Experience
+- Decision: Spotlight links to the existing title details page and existing video player.
+- Alternative Considered: Dedicated Spotlight pages, custom player experiences, or new watch flows.
+- Reason:
+- Allows the team to focus effort on solving content selection rather than content consumption.
+- Reduces engineering complexity and risk.
+- Ensures the entire feature can be delivered by 2 engineers and 1 designer within one sprint.
+- Maximizes learning about whether curated content improves the >30-minute engagement metric.
+### Evals
+- 1. Accuracy (Did Spotlight help users pick something?)
+- Target: ≥ 25% Spotlight Click-to-Play Rate
+- Measurement
+- (# Spotlight titles started)
+- / (# Spotlight titles clicked)
+- Success Threshold
+- Green: >25%
+- Amber: 15-25%
+- Red: <15%
+- 2. Time-on-Task (Did Spotlight reduce browsing time?)
+- Target: Users start playback within 3 minutes of homepage arrival.
+- Measurement
+- Time from Homepage Load
+- → Playback Start
+- Success Threshold
+- Green: Median <3 min
+- Amber: 3-5 min
+- Red: >5 min
+- 3. Safety / Guardrail (Did Spotlight avoid harming engagement?)
+- Target: No decrease in active users while Spotlight is live.
+- Measurement
+- Weekly Active Users
+- vs.
+- Pre-Spotlight Baseline
+- Success Threshold
+- Green: Active users stable or increasing
+- Amber: <2% decline
+- Red: >2% decline
+- Success Statement
+- Spotlight is successful if:
+- ≥25% of Spotlight clicks lead to playback.
+- Users start watching within 3 minutes of opening the app.
+- Active users do not decline as a result of Spotlight replacing attention on the homepage.
+- Provide your feedback on BizChat
+
+## MoSCoW scope
+- **Must:** Team can manually select titles included in Spotlight.; Team can update selections without code deployment.; Curated content is the feature. Without curation there is no Spotlight.Dedicated Spotlight Rail on Homepage; A clearly visible rail placed above or alongside existing content rails.; Immediately visible without significant scrolling.; Small Curated Set of Titles; Display a limited number of titles (e.g. 5-10).; Editorially selected rather than generated solely by the recommendation engine.; Simple Spotlight Branding; Rail is clearly labeled "Spotlight" with short supporting copy such as:; "Not sure what to watch? Start here."; Standard Content Card Information; Each title shows:; Artwork; Title; Content type (movie/series); Basic metadata already available on the platform; Click-Through to Playback Journey; User can open the title details page.; User can start playback through existing flows.; Basic Editorial Management; Measurement; Track:; Spotlight impressions; Spotlight clicks; Spotlight title starts; Session duration after Spotlight interaction
+- **Should:** Rotation Rules; Spotlight titles rotate regularly.; Previously featured titles can be retired automatically.; Basic Eligibility Rules; Exclude:; Unavailable titles; Soon-to-expire titles; Content with known playback issues; Spotlight Performance Dashboard; Display:; CTR; Starts; Completion rate; Impact on session length
+- **Could:** Editorial Hero Banner; Larger featured Spotlight title above the rail.; A/B Testing Framework; Test rail placement; Test copy; Test number of titles
+- **Won't (now):** Personalisation; Personalized Spotlight Queue; Individual recommendation logic; Taste-profile generation; Reason: Introduces complexity and increases perceived choice.; Explanation Features; "Why You'll Love This" labels; Reason: Already prioritised for NEXT.; Mood Selection; Mood-based entry flow; Reason: Separate feature already prioritised independently.; Social Features; Curator profiles; Following curators; Watch parties; Sharing Spotlight picks; Reason: Do not solve the decision paralysis problem.; Discovery Expansion; Hidden Gem badges; Advanced filters; Search enhancements; Browsing refinements; Reason: More discovery is the opposite of the desired outcome.; Communication Features; Spotlight emails; Push notifications; Weekly digest; Reason: Focus is improving the in-session selection experience.; Offline & Download Features; Download from Spotlight; Offline viewing enhancements; Reason: Solves consumption, not selection.
+
+---
+**Builder hook:** Build a working prototype based on this PRD. Use the User Story as the core flow, Functional Requirements as build constraints, and prioritize speed and clarity over visual complexity.
